@@ -49,9 +49,6 @@
       <artifactId>testng</artifactId>
       <version>RELEASE</version>
     </dependency>
-
-
-
   </dependencies>
   <build>
     <finalName>mybatis_One_To_Many</finalName>

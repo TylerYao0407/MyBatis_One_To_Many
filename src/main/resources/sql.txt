@@ -1,0 +1,10 @@
+CREATE TABLE father(
+  fid int AUTO_INCREMENT PRIMARY KEY ,
+  fname VARCHAR(60)
+);
+CREATE TABLE son(
+  sid int AUTO_INCREMENT PRIMARY KEY ,
+  fid int ,
+  sname VARCHAR(60),
+  CONSTRAINT s_f_id_fk FOREIGN KEY (fid) REFERENCES father(fid)
+);
