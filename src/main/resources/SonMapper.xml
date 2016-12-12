@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyler.mapper.SonMapper">
+    <resultMap id="sonMap" type="Son">
+        <id property="sid" column="sid"/>
+        <result property="sname" column="sname"/>
+    </resultMap>
+    <select id="selectSon" parameterType="int" resultMap="sonMap">
+        select * from son where fid=#{fid}
+    </select>
+    <insert id="addSon" parameterType="list">
+        insert into son (fid,sname) values
+        <foreach collection="list" item="son" separator="," >
+        (#{son.fid},#{son.sname})
+        </foreach>
+    </insert>
+    <delete id="deleteSon" parameterType="int">
+        delete from son where fid=#{fid}
+    </delete>
+    <update id="updateSon" parameterType="son">
+        update son SET sname=#{sname} where sid=#{sid}
+    </update>
+</mapper>

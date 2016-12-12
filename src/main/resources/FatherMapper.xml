@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tyler.mapper.FatherMapper">
+    <resultMap id="fatherMap" type="father">
+        <id property="fid" column="fid"/>
+        <result property="fname" column="fname"/>
+        <collection property="sons" column="fid" select="com.tyler.mapper.SonMapper.selectSon"/>
+    </resultMap>
+    <select id="selectFather" parameterType="int" resultMap="fatherMap">
+        select * from father where fid=#{fid}
+    </select>
+    <insert id="addFather" parameterType="father" useGeneratedKeys="true" keyProperty="fid">
+        insert into father (fname) VALUES (#{fname})
+
+    </insert>
+    <delete id="deleteFather" parameterType="int">
+        delete from father where fid=#{fid}
+    </delete>
+</mapper>
